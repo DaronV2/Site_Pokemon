@@ -5,7 +5,7 @@ class Pokemon {
     }
 }
 
-let table = ["pikachu","salameche","carapuce","reptincel","dracaufeu","tortank","test","test","test","test","test","test","test","test","test"];
+let table = ["PIKACHU","salameche","carapuce","reptincel","dracaufeu","tortank","test","test","test","test","test","test","test","test","test"];
 let numbers = ["001","002"];
 
 //let b = document.body;
@@ -15,10 +15,19 @@ let numbers = ["001","002"];
 
 for (let i = 0; i < table.length; i++){
     let pokemon = document.createElement('div');
-    pokemon.className = "pokemon"
+    let header = document.createElement('div');
+    let closeBtn = document.createElement('div');
+    closeBtn.className = "closeBtn";
+    header.className = "headPoke";
+    pokemon.className = "pokemon";
     let pokemonName = document.createTextNode(table[i]);
+    let X = document.createTextNode("X");
+    pokemonName.className = "pokename";
     let test = document.getElementById("mainclasspokemons");
-    pokemon.appendChild(pokemonName);
+    pokemon.appendChild(header);
+    header.appendChild(pokemonName);
+    header.appendChild(closeBtn);
+    closeBtn.appendChild(X);
     test.appendChild(pokemon);
     //elmnt.className("pokemon");
 }

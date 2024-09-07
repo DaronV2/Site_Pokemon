@@ -1,12 +1,55 @@
+.title{
+    font-family: "Honk", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "MORF" 15,
+    "SHLN" 50;
+}
+
+
 .pokemon{
-    padding: 10px;
+    padding: 5px;
     margin: 10px;
     height: 300px;
     width: 200px;
-    border-radius: 5%;
-    border : 1px solid red;
+    background-color: rgb(172, 172, 172);
+    border : 2px solid rgb(146, 146, 146);
+    box-shadow: inset 2px 2px rgb(206, 206, 206),inset -2px -2px gray;
     text-align: center;
+    font-family: "Pixelify Sans";
+    color: azure;
     /* flex: 1 1 200px; */
+}
+
+.headPoke{
+    height: 25px;
+    display: flex;
+    padding: 0.5px;
+    align-items: center;
+    justify-content: space-between; 
+    background: linear-gradient(90deg, rgb(17, 39, 114), rgb(170, 194, 223));
+    z-index: auto;
+}
+
+.closeBtn{
+    display:flex; 
+    height: 20px;
+    width: 20px;
+    background-color: rgb(172, 172, 172);
+    justify-content: center;
+    margin-right: 5px;
+    align-items: center;
+    box-shadow: inset 2px 2px rgb(236, 236, 236),inset -2px -2px rgb(0, 0, 0);
+    z-index: 1;
+    color : black;
+    text-align: center;
+}
+
+.pokename{
+    display: flex;
+    justify-content: center;
 }
 
 .pokemons{
