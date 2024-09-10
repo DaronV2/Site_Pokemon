@@ -45,6 +45,20 @@
     z-index: 1;
     color : black;
     text-align: center;
+    cursor: pointer;
+}
+
+.closeBtn:hover{
+    background-color: rgb(77, 77, 77);
+    box-shadow: inset 2px 2px rgb(40, 40, 40),inset -2px -2px rgb(226, 226, 226);
+    color: white;
+    transform: scale(1.1);
+    transition: 0.4s ease-out;
+}
+
+.scale-down-center {
+	-webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .pokename{

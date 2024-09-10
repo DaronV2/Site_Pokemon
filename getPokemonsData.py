@@ -34,6 +34,8 @@ def get_pokemon_datas(content):
     # for i in content:
     splited = split_content(content)
     print(splited[1])
+    
+        
 
     
     # poke_number = re.findall(r"data-sort-value=\"\d+\"",content)
@@ -44,3 +46,19 @@ def get_pokemon_datas(content):
     #     list_poke_name.append(correct_name(i))
 
 get_pokemon_datas(str(content))
+
+data = open('pokemons.json', encoding="utf8") 
+ 
+print("Datatype before deserialization : "
+      + str(type(data)))
+    
+# deserializing the data
+data = json.load(data) 
+ 
+print("Datatype after deserialization : "
+      + str(type(data)))
+
+for i in data: 
+    print(i)
+
+  
