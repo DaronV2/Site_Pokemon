@@ -1,8 +1,8 @@
 class Pokemon {
-    constructor(Name, Number, Sprite){
-        this.Name = Name;
-        this.Number = Number; 
-        this.Sprite = Sprite;
+    constructor(NameStr, NumberInt, SpriteStr){
+        this.NameStr = NameStr;
+        this.NumberInt = NumberInt; 
+        this.SpriteStr = SpriteStr;
     }
 }
 
@@ -36,41 +36,47 @@ async function fetchJsonData() {
 }
 
 fetchJsonData().then(data => {
-    data.forEach(element => {
-        let pokeNumber = element.pokedex_id;
-        let pokeName = element.name.fr;
-        let pokeSprite = element.sprites.regular;
-        const poke = new Pokemon(pokeName,pokeNumber,pokeSprite);
-        table.push(poke);
-    });
+    if (data){
+        data.forEach(element => {
+            let pokeNumber = element.pokedex_id;
+            let pokeName = element.name.fr;
+            let pokeSprite = element.sprites.regular;
+            const poke = new Pokemon(pokeName,pokeNumber,pokeSprite);
+            table.push(poke);
+        });
+        for ( let j = 1 ; j < table.length ; j++){
+            console.log(table[j]);
+            pokemonObj = table[j];
+            createDivPoke(pokemonObj.NameStr + " #" + addZeros(pokemonObj.NumberInt) + pokemonObj.NumberInt, pokemonObj.SpriteStr);
+        }
+    }else{
+        console.log("pas de datas");
+    }
 });
 
-for (let j = 0; j < table.length; j++){
-    console.log(table[j].Name);
-}
 
 
-for (let i = 0; i < table.length; i++){
-    let pokemon = document.createElement('div');
-    let header = document.createElement('div');
-    let closeBtn = document.createElement('div');
-    closeBtn.className = "closeBtn";
-    closeBtn.id = table[i];
-    header.className = "headPoke";
-    pokemon.className = "pokemon";
-    pokemon.id = table[i];
-    let pokemonName = document.createTextNode(table[i]);
-    let X = document.createTextNode("X");
-    pokemonName.className = "pokename";
-    let test = document.getElementById("mainclasspokemons");
-    pokemon.appendChild(header);
-    header.appendChild(pokemonName);
-    header.appendChild(closeBtn);
-    closeBtn.appendChild(X);
-    test.appendChild(pokemon);
-    //elmnt.className("pokemon");
-    closeBtn.addEventListener("click", () => removeDiv(pokemon));
-}
+// for (let i = 0; i < table.length; i++){
+//     let pokemon = document.createElement('div');
+//     let header = document.createElement('div');
+//     let closeBtn = document.createElement('div');
+//     closeBtn.className = "closeBtn";
+//     closeBtn.id = table[i];
+//     header.className = "headPoke";
+//     pokemon.className = "pokemon";
+//     pokemon.id = table[i];
+//     let pokemonName = document.createTextNode(table[i]);
+//     let X = document.createTextNode("X");
+//     pokemonName.className = "pokename";
+//     let test = document.getElementById("mainclasspokemons");
+//     pokemon.appendChild(header);
+//     header.appendChild(pokemonName);
+//     header.appendChild(closeBtn);
+//     closeBtn.appendChild(X);
+//     test.appendChild(pokemon);
+//     //elmnt.className("pokemon");
+//     closeBtn.addEventListener("click", () => removeDiv(pokemon));
+// }
 
 function removeDiv(div){
     div.remove();
@@ -78,4 +84,40 @@ function removeDiv(div){
 
 function readJSON(data){
     console.log(data);
+}
+
+function createDivPoke(pokeName,spriteStr){
+    let pokemon = document.createElement('div');
+    let header = document.createElement('div');
+    let closeBtn = document.createElement('div');
+    let sprite = document.createElement('img');
+    sprite.src = spriteStr;
+    closeBtn.className = "closeBtn";
+    closeBtn.id = pokeName;
+    header.className = "headPoke";
+    pokemon.className = "pokemon";
+    pokemon.id = pokeName;
+    let pokemonName = document.createTextNode(pokeName);
+    let X = document.createTextNode("X");
+    pokemonName.className = "pokename";
+    let test = document.getElementById("mainclasspokemons");
+    pokemon.appendChild(header);
+    pokemon.appendChild(sprite);
+    header.appendChild(pokemonName);
+    header.appendChild(closeBtn);
+    closeBtn.appendChild(X);
+    test.appendChild(pokemon);
+    closeBtn.addEventListener("click", () => removeDiv(pokemon));
+}
+
+function addZeros(integer){
+    if (integer < 10){
+        return "00";
+    }
+    else if(integer >= 10 && integer <100){
+        return "0";
+    }
+    else{
+        return "";
+    }
 }
