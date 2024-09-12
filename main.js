@@ -90,7 +90,23 @@ async function createDivPoke(pokeObj){
     sprite.className = "spriteImg";
     sprite.src = pokeObj.SpriteStr;
     shinyButton.addEventListener("click", async () => {
-        sprite.src = await getSpritesShiny(pokeObj.NumberInt, sprite)
+        if ( sprite.className.match('animation') == null){
+            sprite.classList.add('animation');
+            sprite.src = await getSpritesShiny(pokeObj.NumberInt)
+        }else{
+            sprite.classList.remove('animation');
+            await sleep(100).then( () =>sprite.classList.add('animation'));
+            sprite.src = await getSprites(pokeObj.NumberInt);
+            await sleep(2000).then( () => sprite.classList.remove('animation'));
+        }
+        // sprite.classList.remove('animation');
+        // else if (sprite.className.match('animation') != null)
+        // {
+        //     sprite.className = sprite.className.replace('animation',' ');
+        //     sprite.className = sprite.className + " animationReversed";
+        //     sprite.src = await getSprites(pokeObj.NumberInt).then('');
+        // }
+        // sprite.className.replace('animationReversed', ' ');
     });
     closeBtn.className = "closeBtn";
     closeBtn.id = pokeObj.NameStr;
@@ -134,7 +150,11 @@ function addZeros(integer){
     }
 }
 
-async function getSpritesShiny(pokeNumber, element){
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function getSpritesShiny(pokeNumber){
     try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+pokeNumber, { cache: 'no-store' });
         if (!response.ok){

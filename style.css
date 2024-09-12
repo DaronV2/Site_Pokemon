@@ -129,6 +129,15 @@
     transition: 0.8 ease-in;
 }
 
+.animation{
+    transition: transform 2s ease;
+    transform: rotate(360deg);
+}
+
+.animationReversed{
+    transition: transform 2s ease;
+    transform: rotate(-360deg);
+}
 /*Chat GPT generated*/
 
 #loader-bg {
