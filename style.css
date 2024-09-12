@@ -8,6 +8,12 @@
     "SHLN" 50;
 }
 
+.pokeTypes{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
 
 .pokemon{
     padding: 5px;
@@ -21,7 +27,17 @@
     font-family: "Pixelify Sans";
     color: azure;
     cursor: pointer;
+    justify-content: center;
+    flex-direction: column;
     /* flex: 1 1 200px; */
+}
+
+.pokemonBody{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    height: auto;
 }
 
 .headPoke{
@@ -60,6 +76,11 @@
 .scale-down-center {
 	-webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.type{
+    box-shadow: inset 2px 2px rgb(40, 40, 40),inset -2px -2px rgb(226, 226, 226);
+    width: 70px;
 }
 
 .pokename{

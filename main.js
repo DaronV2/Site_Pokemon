@@ -38,7 +38,7 @@ async function main(){
             let pokeTypes = [];
             const types = element.types;
             for (const type in types){
-                pokeTypes.push(types[type]);
+                pokeTypes.push(types[type].name);
             }
             return new Pokemon(pokeName, pokeNumber, pokeSprite, pokeTypes);
         });
@@ -76,30 +76,39 @@ function pokemonNameStr(pokeObj){
 }
 
 function createDivPoke(pokeObj){
-    let pokemon = document.createElement('div');
-    let header = document.createElement('div');
-    let closeBtn = document.createElement('div');
-    let sprite = document.createElement('img');
+    const pokemon = document.createElement('div');
+    const header = document.createElement('div');
+    const closeBtn = document.createElement('div');
+    const bodyPokemon = document.createElement('div');
+    const divTypesPoke = document.createElement('div');
+    const sprite = document.createElement('img');
+    bodyPokemon.className = "pokemonBody";
     sprite.src = pokeObj.SpriteStr;
     closeBtn.className = "closeBtn";
     closeBtn.id = pokeObj.NameStr;
     header.className = "headPoke";
     pokemon.className = "pokemon";
-    pokemon.id = pokeObj.NameStr;//
+    pokemon.id = pokeObj.NameStr;
     let pokemonName = document.createTextNode(pokemonNameStr(pokemonObj));
     let X = document.createTextNode("X");
     pokemonName.className = "pokename";
     let test = document.getElementById("mainclasspokemons");
     pokemon.appendChild(header);
-    pokemon.appendChild(sprite);
+    pokemon.appendChild(bodyPokemon);
+    bodyPokemon.appendChild(sprite);
     header.appendChild(pokemonName);
     header.appendChild(closeBtn);
     closeBtn.appendChild(X);
     test.appendChild(pokemon);
+    divTypesPoke.className = "pokeTypes";
     for (let types in pokeObj.TypesPokemonStr){
-        let type = document.createTextNode(pokeObj.TypesPokemonStr[types]);
-        pokemon.appendChild(type);
+        const type = document.createElement("p");
+        let text = pokeObj.TypesPokemonStr[types]+" ";
+        type.innerHTML = text;
+        type.className = "type"
+        divTypesPoke.appendChild(type);
     }
+    bodyPokemon.appendChild(divTypesPoke);
     closeBtn.addEventListener("click", () => removeDiv(pokemon));
 }
 
