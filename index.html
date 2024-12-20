@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="style.css">
+    <link href="/assets/css/output.css" rel="stylesheet">
     <script src="main.js" defer></script>
 </head>
 <body>
@@ -22,7 +23,20 @@
         <button>Home</button>
         <button>About</button>
     </div>
-    <div class="pokemons" id="mainclasspokemons">
+    <div class="pokemons flex flex-row flex-wrap justify-center px-2" id="mainclasspokemons">
+        <template id="pokemon">
+            <div class="pokemon" id="Florizarre">
+                <div class="headPoke">Florizarre #003<div class="closeBtn" id="Florizarre">X</div>
+                </div>
+                <div class="pokemonBody"><img class="spriteImg"
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
+                    <div class="pokeTypes">
+                        <p class="type" style="background-color: rgb(37, 158, 50);">Plante</p>
+                        <p class="type" style="background-color: rgb(114, 37, 158);">Poison</p>
+                    </div><img src="./assets/shiny-star.png">
+                </div>
+            </div>
+        </template>
     </div>
 </body>
 </html>
