@@ -43,20 +43,24 @@
         <div class="h-1 w-1 bg-dragon"></div>
         <div class="h-1 w-1 bg-tenebres"></div>
     </div>
+
     <div class="pokemons flex flex-row flex-wrap justify-center px-2" id="mainclasspokemons">
         <template id="pokemon">
-            <div class="pokemon">
-                <div class="headPoke"><p class="pokeName">Florizarre #003</p><div class="closeBtn" id="Florizarre">X</div></div>
-                <div class="pokemonBody">
-                    <img class="spriteImg pb-2 h-[96px] w-[96px] bg-white shadow-sm shadow-black mb-2" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
-                    <div class="pokeTypes mb-2">
+            <div class="pokemon p-1 m-2 h-72 w-52 bg-[#acacac] border-2 border-[#929292] shadow-custom-inset text-center font-pixelify text-azure cursor-pointer justify-center flex-col">
+                <div class="headPoke h-6 flex p-[0.5px] items-center justify-between z-auto bg-gradient-to-r from-[#112772] to-[#aac2df]">
+                    <p class="pokeName flex justify-center">Florizarre #003</p>
+                    <div class="closeBtn flex h-5 w-5 justify-center mr-1 items-center text-center cursor-pointer bg-buttonColor text-black shadow-custom-inset-button hover:bg-[#4d4d4d] hover:shadow-custom-inset-type hover:text-white hover:scale-[1.1] hover:transition-all hover:duration-200 hover:ease-out" id="Florizarre">X</div>
+                </div>
+                <div class="pokemonBody flex items-center flex-col h-auto">
+                    <img class="spriteImg pb-2 h-[96px] w-[96px] bg-white shadow-sm shadow-black mb-2 mt-2">
+                    <div class="pokeTypes mb-2 flex justify-center gap-2 w-[85%]">
                     </div>
-                    <img class="shinyStar" src="./assets/shiny-star.png" alt="Shiny star" class="h-11 w-9 pt-2">
+                    <img class="shinyStar h-8 w-auto hover:scale-[1.2] hover:transition-all hover:duration-200 hover:ease-in" src="./assets/shiny-star.png" alt="Shiny star">
                 </div>
             </div>
         </template>
         <template id="typeTemplate">
-            <p class="type"></p>
+            <p class="type shadow-custom-inset-type w-20"></p>
         </template>
     </div>
 </body>
