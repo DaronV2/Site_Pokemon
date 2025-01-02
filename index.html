@@ -21,21 +21,42 @@
     </div>
     <div class="buttons">
         <button>Home</button>
-        <button>About</button>
+        <button class="bg-[#070548]">About</button>
+    </div>
+    <div id="loadColors" class="hidden">
+        <div class="h-1 w-1 bg-plante"></div>
+        <div class="h-1 w-1 bg-poison"></div>
+        <div class="h-1 w-1 bg-feu"></div>
+        <div class="h-1 w-1 bg-vol"></div>
+        <div class="h-1 w-1 bg-eau"></div>
+        <div class="h-1 w-1 bg-insecte"></div>
+        <div class="h-1 w-1 bg-normal"></div>
+        <div class="h-1 w-1 bg-electrik"></div>
+        <div class="h-1 w-1 bg-sol"></div>
+        <div class="h-1 w-1 bg-fee"></div>
+        <div class="h-1 w-1 bg-combat"></div>
+        <div class="h-1 w-1 bg-psy"></div>
+        <div class="h-1 w-1 bg-roche"></div>
+        <div class="h-1 w-1 bg-acier"></div>
+        <div class="h-1 w-1 bg-glace"></div>
+        <div class="h-1 w-1 bg-spectre"></div>
+        <div class="h-1 w-1 bg-dragon"></div>
+        <div class="h-1 w-1 bg-tenebres"></div>
     </div>
     <div class="pokemons flex flex-row flex-wrap justify-center px-2" id="mainclasspokemons">
         <template id="pokemon">
-            <div class="pokemon" id="Florizarre">
-                <div class="headPoke">Florizarre #003<div class="closeBtn" id="Florizarre">X</div>
-                </div>
-                <div class="pokemonBody"><img class="spriteImg"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
-                    <div class="pokeTypes">
-                        <p class="type" style="background-color: rgb(37, 158, 50);">Plante</p>
-                        <p class="type" style="background-color: rgb(114, 37, 158);">Poison</p>
-                    </div><img src="./assets/shiny-star.png">
+            <div class="pokemon">
+                <div class="headPoke"><p class="pokeName">Florizarre #003</p><div class="closeBtn" id="Florizarre">X</div></div>
+                <div class="pokemonBody">
+                    <img class="spriteImg pb-2 h-[96px] w-[96px] bg-white shadow-sm shadow-black mb-2" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
+                    <div class="pokeTypes mb-2">
+                    </div>
+                    <img class="shinyStar" src="./assets/shiny-star.png" alt="Shiny star" class="h-11 w-9 pt-2">
                 </div>
             </div>
+        </template>
+        <template id="typeTemplate">
+            <p class="type"></p>
         </template>
     </div>
 </body>
