@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <link href="./assets/css/style.css" rel="stylesheet">
-    <link href="./assets/css/output.css" rel="stylesheet">
-    <script src="./index.js" defer></script>
-</head>
-<body>
-    <div id="loader-bg">
-        <div id="loader"></div>
-    </div>
-    <div class="title">
-        <h1>Pokedex</h1>
-    </div>
-    <div class="buttons">
-        <button>Home</button>
-        <button class="bg-[#070548]">About</button>
-    </div>
-    <div id="loadColors" class="hidden">
-        <div class="h-1 w-1 bg-plante"></div>
-        <div class="h-1 w-1 bg-poison"></div>
-        <div class="h-1 w-1 bg-feu"></div>
-        <div class="h-1 w-1 bg-vol"></div>
-        <div class="h-1 w-1 bg-eau"></div>
-        <div class="h-1 w-1 bg-insecte"></div>
-        <div class="h-1 w-1 bg-normal"></div>
-        <div class="h-1 w-1 bg-electrik"></div>
-        <div class="h-1 w-1 bg-sol"></div>
-        <div class="h-1 w-1 bg-fee"></div>
-        <div class="h-1 w-1 bg-combat"></div>
-        <div class="h-1 w-1 bg-psy"></div>
-        <div class="h-1 w-1 bg-roche"></div>
-        <div class="h-1 w-1 bg-acier"></div>
-        <div class="h-1 w-1 bg-glace"></div>
-        <div class="h-1 w-1 bg-spectre"></div>
-        <div class="h-1 w-1 bg-dragon"></div>
-        <div class="h-1 w-1 bg-tenebres"></div>
-    </div>
-
-    <div class="pokemons flex flex-row flex-wrap justify-center px-2" id="mainclasspokemons">
-        <template id="pokemon">
-            <div class="pokemon p-1 m-2 h-72 w-52 bg-[#acacac] border-2 border-[#929292] shadow-custom-inset text-center font-pixelify text-azure cursor-pointer justify-center flex-col">
-                <div class="headPoke h-6 flex p-[0.5px] items-center justify-between z-auto bg-gradient-to-r from-[#112772] to-[#aac2df]">
-                    <p class="pokeName flex justify-center">Florizarre #003</p>
-                    <div class="closeBtn flex h-5 w-5 justify-center mr-1 items-center text-center cursor-pointer bg-buttonColor text-black shadow-custom-inset-button hover:bg-[#4d4d4d] hover:shadow-custom-inset-type hover:text-white hover:scale-[1.1] hover:transition-all hover:duration-200 hover:ease-out" id="Florizarre">X</div>
-                </div>
-                <div class="pokemonBody flex items-center flex-col h-auto">
-                    <img class="spriteImg pb-2 h-[96px] w-[96px] bg-white shadow-sm shadow-black mb-2 mt-2">
-                    <div class="pokeTypes mb-2 flex justify-center gap-2 w-[85%]">
-                    </div>
-                    <img class="shinyStar h-8 w-auto hover:scale-[1.2] hover:transition-all hover:duration-200 hover:ease-in" src="./assets/shiny-star.png" alt="Shiny star">
-                </div>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Honk&display=swap">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/output.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokedex</title>
+        <script src="./index.js" defer></script>
+    </head>
+    <body>
+        <div id="loader-bg">
+            <div id="loader"></div>
+        </div>
+        <div class="p-1 m-2 bg-[#acacac] border-2 border-[#929292] shadow-custom-inset text-center font-pixelify text-azure cursor-pointer justify-center flex-col">     
+            <div class="title flex bg-gradient-to-r from-[#112772] to-[#aac2df] justify-between items-center p-1">
+                <h1 class="text-azure flex justify-start">Pokédex</h1>
+                <div class="flex h-5 w-5 justify-center items-center text-center cursor-pointer bg-buttonColor text-black shadow-custom-inset-button hover:bg-[#4d4d4d] hover:shadow-custom-inset-type hover:text-white hover:scale-[1.1] hover:transition-all hover:duration-200 hover:ease-out">X</div>
+            </div>           
+            <div class="buttons text-black flex justify-start">
+                <button class="p-1 text-azure"><p class="underline">Home</p></button>
+                <button class="p-1">About</button>
             </div>
-        </template>
-        <template id="typeTemplate">
-            <p class="type shadow-custom-inset-type w-20"></p>
-        </template>
-    </div>
-</body>
+            <div id="loadColors" class="hidden">
+                <div class="h-1 w-1 bg-plante"></div>
+                <div class="h-1 w-1 bg-poison"></div>
+                <div class="h-1 w-1 bg-feu"></div>
+                <div class="h-1 w-1 bg-vol"></div>
+                <div class="h-1 w-1 bg-eau"></div>
+                <div class="h-1 w-1 bg-insecte"></div>
+                <div class="h-1 w-1 bg-normal"></div>
+                <div class="h-1 w-1 bg-electrik"></div>
+                <div class="h-1 w-1 bg-sol"></div>
+                <div class="h-1 w-1 bg-fee"></div>
+                <div class="h-1 w-1 bg-combat"></div>
+                <div class="h-1 w-1 bg-psy"></div>
+                <div class="h-1 w-1 bg-roche"></div>
+                <div class="h-1 w-1 bg-acier"></div>
+                <div class="h-1 w-1 bg-glace"></div>
+                <div class="h-1 w-1 bg-spectre"></div>
+                <div class="h-1 w-1 bg-dragon"></div>
+                <div class="h-1 w-1 bg-tenebres"></div>
+            </div>
+
+            <div class="pokemons flex flex-row flex-wrap justify-center px-2" id="mainclasspokemons">
+                <template id="pokemon">
+                    <div class="pokemon p-1 m-2 h-72 w-52 bg-[#acacac] border-2 border-[#929292] shadow-custom-inset text-center font-pixelify text-azure cursor-pointer justify-center flex-col">
+                        <div class="headPoke h-6 flex p-[0.5px] items-center justify-between z-auto bg-gradient-to-r from-[#112772] to-[#aac2df]">
+                            <p class="pokeName flex justify-center">Florizarre #003</p>
+                            <div class="closeBtn flex h-5 w-5 justify-center mr-1 items-center text-center cursor-pointer bg-buttonColor text-black shadow-custom-inset-button hover:bg-[#4d4d4d] hover:shadow-custom-inset-type hover:text-white hover:scale-[1.1] hover:transition-all hover:duration-200 hover:ease-out" id="Florizarre">X</div>
+                        </div>
+                        <div class="pokemonBody flex items-center flex-col h-auto">
+                            <img class="spriteImg pb-2 h-[96px] w-[96px] bg-white shadow-sm shadow-black mb-2 mt-2">
+                            <div class="pokeTypes mb-2 flex justify-center gap-2 w-[85%]">
+                            </div>
+                            <img class="shinyStar h-8 w-auto hover:scale-[1.2] hover:transition-all hover:duration-200 hover:ease-in" src="./assets/shiny-star.png" alt="Shiny star">
+                        </div>
+                    </div>
+                </template>
+                <template id="typeTemplate">
+                    <p class="type shadow-custom-inset-type w-20"></p>
+                </template>
+            </div>
+        </div>
+    </body>
 </html>
