@@ -3,8 +3,8 @@
     "tailwind": "^4.0.0"
   },
   "scripts": {
-    "watch-tailwind": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch --minify",
-    "build-tailwind": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify"
+    "watch-tailwind": "npx tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch --minify",
+    "build-tailwind": "npx tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/output.css --minify"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
