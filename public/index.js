@@ -16,10 +16,11 @@ const elements = {
 
 let table = [];
 
-const startTime = performance.now();
 async function fetchJsonData() {
   try {
     const response = await fetch("https://tyradex.vercel.app/api/v1/pokemon");
+    const responseDeux = await fetch("./public/downloadCache.json");
+    console.log(responseDeux);
 
     if (!response.ok) {
       throw new Error("Erreur réseau : " + response.statusText);
@@ -35,20 +36,24 @@ async function fetchJsonData() {
 
 async function main() {
   const data = await fetchJsonData();
+  console.log(data);
 
   if (data) {
     const pokemons = data.map(async (element) => {
       const pokeNumber = element.pokedex_id;
       const pokeName = element.name.fr;
-      const pokeSprite = await getSprites(pokeNumber);
-      let pokeTypes = [];
-      const types = element.types;
-      for (const type in types) {
-        pokeTypes.push(types[type].name);
-      }
+      // const startTime = performance.now();
+      const pokeSprite = await getSprites(pokeNumber);  // Récupère l'image du Pokémon
+      // const endTime = performance.now();
+      // console.log(`Execution Time: ${endTime} , ${startTime} milliseconds`);
+      
+      // Créer un tableau des types de Pokémon de manière plus efficace
+      const pokeTypes = element.types ? element.types.map(type => type.name) : [];
+  
+      // Retourner une instance de la classe Pokemon
       return new Pokemon(pokeName, pokeNumber, pokeSprite, pokeTypes);
     });
-
+  
     // Attendre que toutes les promesses soient résolues
     const pokemonList = await Promise.all(pokemons);
 
@@ -59,12 +64,11 @@ async function main() {
       createDivPoke(table[j]);
     }
   } else {
-    console.log("pas de datas");
+    console.error("Erreur lors de la récupération des données");
   }
   document.getElementById("loader-bg").style.display = "none";
   document.getElementById("loader").style.display = "none";
   const endTime = performance.now();
-  console.log(`Execution Time: ${endTime - startTime} milliseconds`);
 }
 
 function removeDiv(div) {
@@ -91,6 +95,9 @@ async function createDivPoke(pokeObj) {
     const templateTypes = types.content.cloneNode(true);
     templateTypes.querySelector(".type").textContent = element;
     templateTypes.querySelector(".type").classList.add("bg-"+removeAccentsAndUpperCase(element));
+    if(removeAccentsAndUpperCase(element) == "electrik"){
+      templateTypes.querySelector(".type").classList.add("text-black");
+    }
     templateInstance.querySelector(".pokeTypes").appendChild(templateTypes);
   });
   templateInstance.querySelector(".shinyStar").addEventListener("click", async () => {
@@ -151,17 +158,20 @@ async function getSpritesShiny(pokeNumber) {
 
 async function getSprites(pokeNumber) {
   try {
-    const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/" + pokeNumber
-    );
-    if (!response.ok) {
-      throw new Error("Toujours pas");
+    if(pokeNumber != 0){
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokeNumber}`
+      );
+      if (!response.ok) {
+        throw new Error("Toujours pas");
+      }
+  
+      const url = await response.json();
+      const jsonData = url.sprites.front_default;
+  
+      return jsonData; // Retourne les données si besoin d'utilisation externe
     }
-
-    const url = await response.json();
-    const jsonData = url.sprites.front_default;
-
-    return jsonData; // Retourne les données si besoin d'utilisation externe
+    return;
   } catch (error) {
     console.error("Erreur lors de la récupération du fichier JSON :", error);
   }
@@ -170,13 +180,13 @@ async function getSprites(pokeNumber) {
 function getColorByType(text) {
   switch (text) {
     case "Plante":
-      return "bg-[#259e32]";
+      return "bg-[#004407]";
     case "Poison":
       return "bg-[#72259e]";
     case "Feu":
       return "bg-[#de1b27]";
     case "Vol":
-      return "bg-[#258a9e]";
+      return "bg-[#063944]";
     case "Eau":
       return "bg-[#2e259e]";
     case "Insecte":
