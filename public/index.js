@@ -36,7 +36,7 @@ async function main() {
   const data = await fetchJsonData();
   console.log(data);
 
-  const responseDeux = await fetch("/public/downloadCache.json");
+  const responseDeux = await fetch("/cache/downloadCache.json");
   console.log(responseDeux);
   const json = await responseDeux.json();
   console.log(json);
