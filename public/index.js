@@ -20,7 +20,7 @@ async function fetchJsonData() {
   try {
     const response = await fetch("https://tyradex.vercel.app/api/v1/pokemon");
     const responseDeux = await fetch("./public/downloadCache.json");
-    console.log(responseDeux);
+    console.log(responseDeux.json());
 
     if (!response.ok) {
       throw new Error("Erreur réseau : " + response.statusText);
