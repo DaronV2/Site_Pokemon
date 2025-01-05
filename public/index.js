@@ -37,8 +37,9 @@ async function main() {
   console.log(data);
 
   const responseDeux = await fetch("127.0.0.1:3000/public/downloadCache.json");
-    const json = await responseDeux.json();
-    console.log(json);
+  console.log(responseDeux);
+  const json = await responseDeux.json();
+  console.log(json);
 
   if (data) {
     const pokemons = data.map(async (element) => {
