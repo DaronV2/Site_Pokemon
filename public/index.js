@@ -1,6 +1,6 @@
 class Pokemon {
   constructor(NameStr, NumberInt, SpriteStr, TypesPokemonStr) {
-    this.NameStr = NameStr;
+    this.NameStr = NameStr+" #"+addZeros(NumberInt);
     this.NumberInt = NumberInt;
     this.SpriteStr = SpriteStr;
     this.TypesPokemonStr = TypesPokemonStr;
@@ -34,7 +34,6 @@ async function fetchJsonData() {
 
 async function main() {
   const data = await fetchJsonData();
-  console.log(data);
 
   if (data) {
     const pokemons = data.map(async (element) => {
@@ -86,6 +85,9 @@ async function createDivPoke(pokeObj) {
   templateInstance.querySelector(".pokemon").id = pokeObj.NameStr;
   templateInstance.querySelector(".pokeName").textContent = pokeObj.NameStr;
   templateInstance.querySelector(".closeBtn").id = pokeObj.NameStr;
+  templateInstance.querySelector(".closeBtn").addEventListener("click", () => {
+    document.getElementById(pokeObj.NameStr).classList.add("hidden");
+  });
   templateInstance.querySelector(".spriteImg").src = pokeObj.SpriteStr;
   templateInstance.querySelector(".spriteImg").alt = pokeObj.NameStr;
   pokeObj.TypesPokemonStr.forEach((element) => {
@@ -124,11 +126,11 @@ function removeAccentsAndUpperCase(str) {
 
 function addZeros(integer) {
   if (integer < 10) {
-    return "00";
+    return "00"+integer;
   } else if (integer >= 10 && integer < 100) {
-    return "0";
+    return "0"+integer;
   } else {
-    return "";
+    return ""+integer;
   }
 }
 
