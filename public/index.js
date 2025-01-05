@@ -36,11 +36,6 @@ async function main() {
   const data = await fetchJsonData();
   console.log(data);
 
-  const responseDeux = await fetch("/cache/downloadCache.json");
-  console.log(responseDeux);
-  const json = await responseDeux.json();
-  console.log(json);
-
   if (data) {
     const pokemons = data.map(async (element) => {
       const pokeNumber = element.pokedex_id;
