@@ -19,8 +19,9 @@ let table = [];
 async function fetchJsonData() {
   try {
     const response = await fetch("https://tyradex.vercel.app/api/v1/pokemon");
-    const responseDeux = await fetch("./public/downloadCache.json");
-    console.log(responseDeux.json());
+    const responseDeux = await fetch("127.0.0.1:3000/public/downloadCache.json");
+    // const json = await responseDeux.json();
+    console.log(responseDeux.status);
 
     if (!response.ok) {
       throw new Error("Erreur réseau : " + response.statusText);
